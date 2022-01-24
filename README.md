@@ -2,7 +2,7 @@
 
 **━ Maintainer(s):** [**Tron**](https://github.com/OvileAmriam)**,** [**Aviril**](https://github.com/Aviril)
 
-**Animify Pack** is an open-source animation pack by **vStudio** for vEngine. Animify pack will be growing over the time by me (Tron): Adding multiple skeleton rig base and animations for them in versioning format. Pack is supposed to get developers get started without wondering or recreating basic to advanced animations for their gamemode. Pack will come with getter/setter functions out of the box letting you configure animation speed, blending props!
+**Animify Pack** is an open-source animation pack by **vStudio** for vEngine. Animify pack will be growing over the time from adding multiple skeleton **Rig-Bases** and **Animations** for them in versioning format. Pack is supposed to get developers get started without wondering or recreating basic to advanced animations for their gamemode. Pack will come with getter/setter functions out of the box letting you configure animation speed, blending props!
 
 ## ━ Features
 
