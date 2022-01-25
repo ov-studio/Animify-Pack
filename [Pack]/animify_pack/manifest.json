@@ -1,0 +1,23 @@
+{
+    "asset": [
+        "name": "Animify Pack",
+        "owner": "vStudio",
+        "type": "Asset",
+        "version": "1.0.0"
+    ],
+
+    "exports": [],
+
+    "shared": [
+        "settings/shared.lua"
+    ],
+
+    "client": [
+        "handlers/loader.lua",
+        "handlers/syncer.lua"
+    ],
+
+    "server": [
+        "exports/server.lua"
+    ]
+}
