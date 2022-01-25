@@ -12,35 +12,36 @@
 --[[ Variables ]]--
 -------------------
 
-local loaderCache = {}
+local loaderCache = {
+    --Buffer
+    cache = {},
+
+    --Methods
+    load = function loaderCache.load(animPath, loadType)
+        if animPath or (type(animPath) ~= "string") or not loadType or (type(loadType) ~= "string") then return false end
+        if loadType == "load" then
+            if not loaderCache.cache[animPath] then
+                local animationData = vEngine.animation:load(animPath)
+                if animationData then
+                    loaderCache.cache[animPath] = animationData
+                    return animationData
+                end
+            end
+        elseif loadType == "unload" then
+            if loaderCache.cache[animPath] then
+                local animationData = loaderCache.cache[animPath]:unload()
+                loaderCache.cache[animPath] = nil
+                return true
+            end
+        end
+        return false
+    end
+}
 
 
 ---------------------------------------
 --[[ Functions: Loads/Unloads Anim ]]--
 ---------------------------------------
 
-local function __loadAnim(animPath, loadType)
-
-    if animPath or (type(animPath) ~= "string") or not loadType or (type(loadType) ~= "string") then return false end
-
-    if loadType == "load" then
-        if not loaderCache[animPath] then
-            local animationData = vEngine.animation:load(animPath)
-            if animationData then
-                loaderCache[animPath] = animationData
-                return animationData
-            end
-        end
-    elseif loadType == "unload" then
-        if loaderCache[animPath] then
-            local animationData = loaderCache[animPath]:unload()
-            loaderCache[animPath] = nil
-            return true
-        end
-    end
-    return false
-
-end
-
-function loadAnim(...) return __loadAnim(...) end
-function unloadAnim(...) return __loadAnim(...) end
+function loadAnim(...) return loaderCache.load(...) end
+function unloadAnim(...) return loaderCache.load(...) end
