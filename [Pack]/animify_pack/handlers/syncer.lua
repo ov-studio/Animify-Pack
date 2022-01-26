@@ -15,10 +15,10 @@
 function syncAnimation(CElement, animPath)
 
     if not CElement or not animPath then return false end
-    local CAnimation = loadAnim(animPath)
+    local CAnimation = AnimLoader.load(animPath, "load")
     if not CAnimation then return false end
 
     return CElement:setAnimation(CAnimation, Settings.frameRate)
 
 end
-vEngine.event.add("Animify_Pack:syncAnimation", syncAnimation)
+vEngine.event.add("Animify-Pack:syncAnimation", syncAnimation)

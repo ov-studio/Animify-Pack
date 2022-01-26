@@ -6,18 +6,23 @@
         "version": "1.0.0"
     ],
 
-    "exports": [],
+    "exports": [
+        "shared": [
+            "setAnimation"
+        ],
+
+        "client": [
+            "getAnimation"
+        ]
+    ],
 
     "shared": [
-        "settings/shared.lua"
+        "settings/shared.lua",
+        "exports/shared.lua"
     ],
 
     "client": [
         "handlers/loader.lua",
         "handlers/syncer.lua"
-    ],
-
-    "server": [
-        "exports/server.lua"
     ]
 }
