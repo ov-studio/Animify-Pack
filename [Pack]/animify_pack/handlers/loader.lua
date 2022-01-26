@@ -12,25 +12,25 @@
 --[[ Variables ]]--
 -------------------
 
-local loaderCache = {
-    --Buffer
+local animLoader = {
+    --Class Buffer
     cache = {},
 
-    --Methods
-    load = function loaderCache.load(animPath, loadType)
+    --Class Methods
+    load = function(animPath, loadType)
         if animPath or (type(animPath) ~= "string") or not loadType or (type(loadType) ~= "string") then return false end
         if loadType == "load" then
-            if not loaderCache.cache[animPath] then
-                local animationData = vEngine.animation:load(animPath)
-                if animationData then
-                    loaderCache.cache[animPath] = animationData
-                    return animationData
+            if not animLoader.cache[animPath] then
+                local CAnimation = vEngine.animation:load(animPath)
+                if CAnimation then
+                    animLoader.cache[animPath] = CAnimation
+                    return CAnimation
                 end
             end
         elseif loadType == "unload" then
-            if loaderCache.cache[animPath] then
-                local animationData = loaderCache.cache[animPath]:unload()
-                loaderCache.cache[animPath] = nil
+            if animLoader.cache[animPath] then
+                local CAnimation = animLoader.cache[animPath]:unload()
+                animLoader.cache[animPath] = nil
                 return true
             end
         end
@@ -43,5 +43,5 @@ local loaderCache = {
 --[[ Functions: Loads/Unloads Anim ]]--
 ---------------------------------------
 
-function loadAnim(...) return loaderCache.load(...) end
-function unloadAnim(...) return loaderCache.load(...) end
+function loadAnim(...) return animLoader.load(...) end
+function unloadAnim(...) return animLoader.load(...) end
